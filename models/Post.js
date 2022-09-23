@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose") 
 
 const postSchema = new mongoose.Schema({
     title: {
@@ -11,6 +11,10 @@ const postSchema = new mongoose.Schema({
         unique:true
     },
     tags: {
+        type:Array, 
+        default:[]
+    },
+    comments: {
         type:Array, 
         default:[]
     },
@@ -31,4 +35,4 @@ const postSchema = new mongoose.Schema({
 
 
 
-export default mongoose.model("Post", postSchema)
+module.exports = mongoose.model("Post", postSchema)
