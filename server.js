@@ -21,7 +21,7 @@ const start = async ()=> {
     try {
         await mongoose.connect(process.env.MONGODB_URI)
         app.listen(process.env.PORT || 5000, ()=> {
-            console.log("Сервер работает")
+            console.log("Сервер начал работу")
         })
     } catch(err) {
         console.log(err)
