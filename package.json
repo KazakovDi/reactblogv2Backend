@@ -15,7 +15,6 @@
   },
   "devDependencies": {},
   "scripts": {
-    "heroku-postbuild": "npm run start",
     "start": "node server.js"
   },
   "author": "",
