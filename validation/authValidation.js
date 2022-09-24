@@ -1,4 +1,4 @@
-const { body } = require("express-validator" ) 
+import { body } from "express-validator"
 const registerValidation = [
     body("email", "Неверный формат email").isEmail(),
     body("password", "Неверный формат пароля").isLength({min:3}),
@@ -9,7 +9,7 @@ const loginValidation = [
     body("email", "Неверный формат email").isEmail(),
     body("password", "Неверный формат пароля").isLength({min:3})
 ]
-module.exports = {
+export default {
     registerValidation: registerValidation,
     loginValidation:loginValidation
 };

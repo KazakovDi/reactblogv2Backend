@@ -1,11 +1,11 @@
-const Post = require("../models/Post")
-const User = require("../models/User")
-const Tag = require("../models/Tag")
-const Comment = require("../models/Comment")
-const {Router} = require("express")
+import Post from"../models/Post.js"
+import User from"../models/User.js"
+import Tag from"../models/Tag.js"
+import Comment from "../models/Comment.js"
+import {Router} from "express"
 const router = new Router()
-const checkAuth = require("../utils/checkAuth")
-const multer = require("multer")
+import checkAuth from "../utils/checkAuth.js"
+import multer from "multer"
 const storage = multer.diskStorage({
     destination: (req, file, callback)=> {
         callback(null, "uploads")
@@ -174,4 +174,4 @@ router.delete("/posts/:id", checkAuth, async (req,res)=> {
             console.log(err)
         }
 })
-module.exports = router
+export default router

@@ -1,8 +1,8 @@
-const express = require("express")
-const mongoose = require("mongoose")
-const cors = require("cors")
-const postsRouter = require("./Routes/posts.js")
-const authRouter = require("./Routes/auth.js")
+import express from "express"
+import mongoose from "mongoose"
+import cors from "cors"
+import * as postsRouter from "./Routes/posts.js"
+import * as authRouter from"./Routes/auth.js"
 
 const app = express()
 

@@ -1,12 +1,12 @@
-const Post = require("../models/Post")
-const User = require("../models/User")
-const jwt = require("jsonwebtoken")
-const bcrypt = require("bcrypt")
-const {Router} = require("express")
+import Post from"../models/Post.js"
+import User from"../models/User.js"
+import jwt from "jsonwebtoken"
+import bcrypt from "bcrypt"
+import {Router} from "express"
 const router = new Router()
-const { validationResult } = require("express-validator") 
-const {loginValidation, registerValidation} = require("../validation/authValidation")
-const checkAuth = require("../utils/checkAuth")
+import { validationResult } from "express-validator"
+import {loginValidation, registerValidation} from "../validation/authValidation.js"
+import checkAuth from"../utils/checkAuth.js"
 router.post("/login",loginValidation, async (req, res)=> {
     try {
         const errors = validationResult(req)
@@ -95,4 +95,4 @@ router.get("/:id", async (req,res)=> {
         res.status(500).json({message:"Не удалось найти пользователя"})
     }
 })
-module.exports = router
+export default router
