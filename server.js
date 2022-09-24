@@ -13,13 +13,13 @@ app.use(cors())
 app.use(express.json())
 
 
-app.use("/", postsRouter)
-app.use("/auth", authRouter)
-app.use("/uploads", express.static("uploads"))
+// app.use("/", postsRouter)
+// app.use("/auth", authRouter)
+// app.use("/uploads", express.static("uploads"))
 
 const start = async ()=> {
     try {
-        await mongoose.connect(process.env.MONGODB_URI)
+        // await mongoose.connect(process.env.MONGODB_URI)
         app.listen(process.env.PORT || 5000, ()=> {
             console.log("Сервер начал работу")
         })
