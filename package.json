@@ -15,7 +15,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "nodemon server.js"
+    "heroku-postbuild": "npm run start",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC"
