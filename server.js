@@ -1,8 +1,8 @@
 import express from "express"
 import mongoose from "mongoose"
 import cors from "cors"
-import * as postsRouter from "./Routes/posts.js"
-import * as authRouter from"./Routes/auth.js"
+import {postsRouter} from "./Routes/posts.js"
+import {authRouter} from"./Routes/auth.js"
 
 const app = express()
 
@@ -19,7 +19,7 @@ app.use("/uploads", express.static("uploads"))
 
 const start = async ()=> {
     try {
-        await mongoose.connect(process.env.MONGODB_URI)
+        await mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://user:user@cluster0.gjm6c.mongodb.net/blog?retryWrites=true&w=majority")
         app.listen(process.env.PORT || 5000, ()=> {
             console.log("Сервер начал работу")
         })

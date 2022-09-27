@@ -174,4 +174,5 @@ router.delete("/posts/:id", checkAuth, async (req,res)=> {
             console.log(err)
         }
 })
-export default router
+export {router as postsRouter};
+// export default router

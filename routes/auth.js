@@ -95,4 +95,6 @@ router.get("/:id", async (req,res)=> {
         res.status(500).json({message:"Не удалось найти пользователя"})
     }
 })
-export default router
+export {router as authRouter};
+
+// export default router
