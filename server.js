@@ -1,8 +1,8 @@
 import express from "express"
 import mongoose from "mongoose"
 import cors from "cors"
-import {postsRouter} from "./Routes/posts.js"
-import {authRouter} from"./Routes/auth.js"
+import {postsRouter} from "./routes/posts.js"
+import {authRouter} from"./routes/auth.js"
 
 const app = express()
 
