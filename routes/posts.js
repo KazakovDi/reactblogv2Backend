@@ -32,7 +32,7 @@ router.get("/tags", async (req, res)=> {
 })
 router.get("/posts", async (req, res)=> {
     try {
-        let sortProps = "createdAt"
+        let sortProps = ["createdAt", - 1]
         if(req.query.sortProps === "undefined")
             sortProps = [req.query.sortProps, - 1]
         let searchProps = {}
