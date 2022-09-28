@@ -96,5 +96,3 @@ router.get("/:id", async (req,res)=> {
     }
 })
 export {router as authRouter};
-
-// export default router

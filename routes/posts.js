@@ -177,4 +177,3 @@ router.delete("/posts/:id", checkAuth, async (req,res)=> {
         }
 })
 export {router as postsRouter};
-// export default router
