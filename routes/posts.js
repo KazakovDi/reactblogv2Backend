@@ -32,11 +32,9 @@ router.get("/tags", async (req, res)=> {
 })
 router.get("/posts", async (req, res)=> {
     try {
-        let sortProps = ["createdAt", - 1]
-        if(req.query.sortProps === "undefined")
-            sortProps = [req.query.sortProps, - 1]
+        const sortProps = [req.query.sortProps, - 1]
         let searchProps = {}
-        if (req.query.searchProps !== "undefined")
+        if (req.query.searchProps !== "undefined" && req.query.searchProps !== undefined)
             searchProps = {'tags':{ $elemMatch: {'body': req.query.searchProps}}}
         const posts = await Post.find(searchProps).sort([sortProps]).populate("user").exec()
         res.json(posts)
@@ -177,3 +175,4 @@ router.delete("/posts/:id", checkAuth, async (req,res)=> {
         }
 })
 export {router as postsRouter};
+// export default router
