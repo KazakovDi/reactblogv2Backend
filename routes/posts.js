@@ -34,7 +34,7 @@ router.get("/posts", async (req, res)=> {
     try {
         let sortProps = ['createdAt', - 1]
         if(req.query.sortProps !== undefined)
-            let sortProps = [req.query.sortProps, - 1]
+            sortProps = [req.query.sortProps, - 1]
         let searchProps = {}
         if (req.query.searchProps !== "undefined" && req.query.searchProps !== undefined)
             searchProps = {'tags':{ $elemMatch: {'body': req.query.searchProps}}}
