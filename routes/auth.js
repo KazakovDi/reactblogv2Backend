@@ -47,7 +47,7 @@ router.post("/register",registerValidation, async (req, res)=> {
             fullName: req.body.fullName
         })
         if(!req.body.avatarUrl)
-            newUser.avatarUrl = `${process.env.REACT_APP_API_URL}/uploads/empty_user.png`
+            newUser.avatarUrl = `https://${process.env.REACT_APP_API_URL}/uploads/empty_user.png`
         else {
             newUser.avatarUrl = req.body.avatarUrl
         }
@@ -78,7 +78,7 @@ router.get("/me", checkAuth, async (req,res)=> {
 })
 router.post("/changeAvatar",checkAuth, async (req,res)=> {
         const user = await User.findById(req.userId)
-        user.avatarUrl = `${process.env.REACT_APP_API_URL}` + req.body.avatarUrl
+        user.avatarUrl = `https://reactblogv2.herokuapp.com` + req.body.avatarUrl
         await user.save()
         res.json("success")
 
