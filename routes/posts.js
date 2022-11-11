@@ -32,12 +32,14 @@ router.get("/tags", async (req, res)=> {
 })
 router.get("/posts", async (req, res)=> {
     try {
+        console.log("searchProps", req.query.searchProps)
         let sortProps = ['createdAt', - 1]
         if(req.query.sortProps !== undefined)
             sortProps = [req.query.sortProps, - 1]
         let searchProps = {}
-        if (req.query.searchProps !== "undefined" && req.query.searchProps !== undefined)
+        if (req.query.searchProps !== "undefined" && req.query.searchProps !== undefined && req.query.searchProps !== '')
             searchProps = {'tags':{ $elemMatch: {'body': req.query.searchProps}}}
+        console.log(searchProps)
         const posts = await Post.find(searchProps).sort([sortProps]).populate("user").exec()
         res.json(posts)
     } catch(err) {
@@ -75,6 +77,7 @@ router.get("/posts/:id", async (req, res)=> {
     }
 })
 router.post("/createPost",checkAuth, async (req,res)=> {
+    console.log("req.body", req.body)
     try {
         const tags = []
         for (let i = 0; i < req.body.tags.length; i++) { 
