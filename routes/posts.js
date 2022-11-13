@@ -22,9 +22,11 @@ router.get("/tags", async (req, res)=> {
     try {
         const sortProps = ["count", - 1]
         const tags = await Tag.find().sort([sortProps]).limit(5).exec()
+        // const tags = undefined
         if(!tags)
-            res.status(404).json({message: "Теги не найдены"})
-        res.json(tags)
+            return res.status(404).json({message: "Теги не найдены"})
+        else
+            res.json(tags)
     } catch(err) {
         res.status(500).json({message:"Теги сейчас не доступны"})
         console.log(err)
@@ -32,14 +34,13 @@ router.get("/tags", async (req, res)=> {
 })
 router.get("/posts", async (req, res)=> {
     try {
-        console.log("searchProps", req.query.searchProps)
         let sortProps = ['createdAt', - 1]
         if(req.query.sortProps !== undefined)
             sortProps = [req.query.sortProps, - 1]
         let searchProps = {}
+        // req.query = undefined
         if (req.query.searchProps !== "undefined" && req.query.searchProps !== undefined && req.query.searchProps !== '')
             searchProps = {'tags':{ $elemMatch: {'body': req.query.searchProps}}}
-        console.log(searchProps)
         const posts = await Post.find(searchProps).sort([sortProps]).populate("user").exec()
         res.json(posts)
     } catch(err) {
@@ -72,7 +73,7 @@ router.get("/posts/:id", async (req, res)=> {
                 res.json(doc)
             }).populate("user")
     } catch(err) {
-        res.status(500).json({message:"Серверная ошибка"})
+        res.status(500).json({message:"Серверная ошибка. Попробуйте обновить страницу или зайти позже"})
         console.log(err)
     }
 })

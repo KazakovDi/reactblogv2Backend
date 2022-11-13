@@ -89,7 +89,7 @@ router.get("/:id", async (req,res)=> {
         if(!user)
             res.status(404).json({message:"Такого пользователя нет"})
         const {password, ...userData} = user._doc
-        res.json({userData})
+        res.json({...userData})
     } catch(err) {
         console.log(err)
         res.status(500).json({message:"Не удалось найти пользователя"})
