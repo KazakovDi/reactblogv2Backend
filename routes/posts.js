@@ -42,6 +42,7 @@ router.get("/posts", async (req, res)=> {
         if (req.query.searchProps !== "undefined" && req.query.searchProps !== undefined && req.query.searchProps !== '')
             searchProps = {'tags':{ $elemMatch: {'body': req.query.searchProps}}}
         const posts = await Post.find(searchProps).sort([sortProps]).populate("user").exec()
+        console.log("posts", posts)
         res.json(posts)
     } catch(err) {
         res.status(500).json({message:"На данный момент сайт не работает, попробуйте зайти позже"})
@@ -70,15 +71,14 @@ router.get("/posts/:id", async (req, res)=> {
                 }
                 if(!doc)
                     return res.status(404).json({message: "Статья не найдена"})       
-                res.json(doc)
+                res.json([doc])
             }).populate("user")
     } catch(err) {
         res.status(500).json({message:"Серверная ошибка. Попробуйте обновить страницу или зайти позже"})
         console.log(err)
     }
 })
-router.post("/createPost",checkAuth, async (req,res)=> {
-    console.log("req.body", req.body)
+router.post("/createPost", checkAuth, async (req,res)=> {
     try {
         const tags = []
         for (let i = 0; i < req.body.tags.length; i++) { 
