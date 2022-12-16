@@ -47,7 +47,7 @@ router.post("/register",registerValidation, async (req, res)=> {
             fullName: req.body.fullName
         })
         if(!req.body.avatarUrl)
-            newUser.avatarUrl = `https://${process.env.REACT_APP_API_URL}/uploads/empty_user.png`
+            newUser.avatarUrl = `https://blogged.onrender.com/uploads/empty_user.png`
         else {
             newUser.avatarUrl = req.body.avatarUrl
         }
