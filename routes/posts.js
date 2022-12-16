@@ -42,7 +42,6 @@ router.get("/posts", async (req, res)=> {
         if (req.query.searchProps !== "undefined" && req.query.searchProps !== undefined && req.query.searchProps !== '')
             searchProps = {'tags':{ $elemMatch: {'body': req.query.searchProps}}}
         const posts = await Post.find(searchProps).sort([sortProps]).populate("user").exec()
-        console.log("posts", posts)
         res.json(posts)
     } catch(err) {
         res.status(500).json({message:"На данный момент сайт не работает, попробуйте зайти позже"})
